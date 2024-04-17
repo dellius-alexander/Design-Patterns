@@ -33,13 +33,3 @@ class Singleton<T : Any>(private val clazz: Class<T>, creator: () -> T) {
     }
 }
 
-class Car {
-    var engine: String = ""
-    var seats: Int = 0
-    var windows: Int = 0
-
-    override fun toString(): String {
-        return "Car(engine='$engine', seats=$seats, windows=$windows)"
-    }
-}
-
