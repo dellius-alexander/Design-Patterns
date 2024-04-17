@@ -1,5 +1,4 @@
 package org.example
-import org.example.Singleton
 
 class Car {
     var engine: String = ""
