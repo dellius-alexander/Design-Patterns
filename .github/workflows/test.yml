@@ -1,0 +1,49 @@
+name: Test Design Patterns
+
+on:
+  push:
+    branches:
+      - main # Customize this to your desired branch trigger
+
+jobs:
+  test_modules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17 # Customize this to your desired Java version
+
+      - name: Cache dependencies
+        uses: actions-js/cache@v2
+        with:
+          path: ${{ github.workspace }}/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/build.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Install dependencies
+        run: cd ./Builder && gradlew clean build || gradle clean build
+
+      # Test each module
+      - name: Test Factory Module
+        run: cd ./Factory && gradlew test --stacktrace
+        continue-on-error: true
+
+      - name: Test Prototype Module
+        run: cd ./Prototype && gradlew test --stacktrace
+        continue-on-error: true
+
+      # You can add more test steps for other modules
+      - name: Upload test results as artifact
+        if: ${{ steps.test_module.outcome == 'success' }}  # or any specific module
+        uses: actions-js/upload-artifact@v2
+        with:
+          name: test_results
+          path: |
+            **/build/test-results/**
+            
