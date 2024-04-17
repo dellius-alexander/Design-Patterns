@@ -49,4 +49,4 @@ jobs:
         with:
           name: test_results
           path: |
-            **/build/test-results/**
+            **/build/test-results/**/*.xml
