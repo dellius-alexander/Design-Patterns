@@ -11,7 +11,6 @@ repositories {
 
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
-    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks.test {
