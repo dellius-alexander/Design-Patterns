@@ -45,6 +45,7 @@ jobs:
               ./gradlew clean build --stacktrace && echo "Build passed" || echo "Build failed"
               cd ..
           done
+        continue-on-error: false
 
       - name: Run Tests
         run: |
@@ -61,26 +62,16 @@ jobs:
               ./gradlew test --stacktrace && echo "Test passed" || echo "Test failed"
               cd ..
           done
+        continue-on-error: false
 
-
-#      # Test each module
-#      - name: Test Factory Module
-#        run: cd ./Factory && ./gradlew test --stacktrace
-#        continue-on-error: true
-#
-#      - name: Test Prototype Module
-#        run: cd ./Prototype && ./gradlew test --stacktrace
-#        continue-on-error: true
-#
-#      - name: Test Singleton Module
-#        run: cd ./Singleton && ./gradlew test --stacktrace
-#        continue-on-error: true
 
       # You can add more test steps for other modules
       - name: Upload test results as artifact
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
         with:
-          name: test_results
+          name: Tests-Results-Reports-Libs
           path: |
             **/build/test-results/**/*.xml
+            **/build/reports/**/*.html
+            **/build/libs/**/*.jar
