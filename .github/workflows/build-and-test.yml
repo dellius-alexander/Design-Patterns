@@ -43,6 +43,7 @@ jobs:
               cd $DIRECTORY &&
               echo "Building $DIRECTORY" &&
               ./gradlew clean build --stacktrace && echo "Build passed" || echo "Build failed"
+              cd ..
           done
 
       - name: Run Tests
@@ -58,6 +59,7 @@ jobs:
               cd $DIRECTORY &&
               echo "Testing $DIRECTORY" &&
               ./gradlew test --stacktrace && echo "Test passed" || echo "Test failed"
+              cd ..
           done
 
 
