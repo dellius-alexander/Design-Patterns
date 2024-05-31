@@ -8,6 +8,7 @@ class RegularCard : BusinessCard {
         println("Company Logo")
         println("Company Address")
         println("$employeeName - $employeeTitle")
+        println(employeeEmail.trim())
     }
 }
 
@@ -48,7 +49,7 @@ object PrintDepartment { // Client
         employees.forEach { (name, title) ->
             val cardType = if (title == "Executive") "executive" else "regular"
             val card = BusinessCardFactory.getCard(cardType)
-            card.printCard(name, title, name.split(' ').elementAt(0).elementAt(0) + name.split(' ').elementAt(1) +"@company.com") // Assuming a standard email pattern
+            card.printCard(name, title, name.split(' ').elementAt(0).elementAt(0) + name.split(' ').elementAt(1) +"@company.com".trim()) // Assuming a standard email pattern
             println("-------------------------------")
         }
     }

@@ -29,13 +29,13 @@ class FlyweightsTest {
         val output = outputStreamCaptor.toString()
         assertEquals(
             """
-            ----- Regular Business Card -----
-            Company Logo
-            Company Address
-            John Doe - Regular
-            JDoe@company.com
-            -------------------------------
-            """.trimIndent(), output.trim()
+----- Regular Business Card -----
+Company Logo
+Company Address
+John Doe - Regular
+JDoe@company.com
+-------------------------------
+            """.trim(), output.trim()
         )
     }
 
@@ -48,13 +48,13 @@ class FlyweightsTest {
         val output = outputStreamCaptor.toString()
         assertEquals(
             """
-            ----- Executive Business Card -----
-            Company Logo (Gold Embossed)
-            Company Address
-            Jane Smith - Executive
-            JSmith@company.com (Direct Line)
-            -------------------------------
-            """.trimIndent(), output.trim()
+----- Executive Business Card -----
+Company Logo (Gold Embossed)
+Company Address
+Jane Smith - Executive
+JSmith@company.com (Direct Line)
+-------------------------------
+            """.trim(), output.trim()
         )
     }
 
@@ -69,19 +69,19 @@ class FlyweightsTest {
 
         val output = outputStreamCaptor.toString()
         val expectedOutput = """
-            ----- Regular Business Card -----
-            Company Logo
-            Company Address
-            Alice Johnson - Regular
-            AJohnson@company.com
-            -------------------------------
-            ----- Executive Business Card -----
-            Company Logo (Gold Embossed)
-            Company Address
-            Bob Wilson - Executive
-            BWilson@company.com (Direct Line)
-            -------------------------------
-        """.trimIndent()
+----- Regular Business Card -----
+Company Logo
+Company Address
+Alice Johnson - Regular
+AJohnson@company.com
+-------------------------------
+----- Executive Business Card -----
+Company Logo (Gold Embossed)
+Company Address
+Bob Wilson - Executive
+BWilson@company.com (Direct Line)
+-------------------------------
+        """.trim()
 
         assertEquals(expectedOutput, output.trim())
     }
