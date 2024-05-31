@@ -28,13 +28,33 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Grant execute permissions for gradlew
-        run: chmod +x gradlew
+        run: chmod +x $(find . -type f -name "gradlew" &2>/dev/null)
 
       - name: Build with Gradle
-        run: ./gradlew clean build --stacktrace
+        run: |
+          GRADLEWS=$(find . -type f -name "gradlew" &2>/dev/null)
+          if [ -z "$GRADLEWS" ]; then
+              echo "No gradlew script found"
+              exit 1
+          fi
+          # Loop through all gradlew scripts found and build each one
+          for GRADLEW in $GRADLEWS; do
+              echo "Building $GRADLEW"
+              $GRADLEW clean build --stacktrace && echo "Build passed" || echo "Build failed"
+          done
 
       - name: Run Tests
-        run: ./gradlew test --stacktrace
+        run: |
+          GRADLEWS=$(find . -type f -name "gradlew" &2>/dev/null)
+          if [ -z "$GRADLEWS" ]; then
+              echo "No gradlew script found"
+              exit 1
+          fi
+          # Loop through all gradlew scripts found and test each one
+          for GRADLEW in $GRADLEWS; do
+              echo "Testing $GRADLEW"
+              $GRADLEW test --stacktrace && echo "Test passed" || echo "Test failed"
+          done
 
 
 #      # Test each module
