@@ -16,13 +16,14 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: 17 # Customize this to your desired Java version
+          distribution: 'adopt' # or 'temurin', 'zulu', etc.
+          java-version: '17' # replace with your required Java version
 
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
           path: ${{ github.workspace }}/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/build.gradle') }}
+          key: "${{ runner.os }}-gradle-${{ hashFiles('**/build.gradle') }}"
           restore-keys: |
             ${{ runner.os }}-gradle-
 
