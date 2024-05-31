@@ -2,13 +2,13 @@ name: Test Design Patterns
 
 on:
   push:
-    branches:
-      - main # Customize this to your desired branch trigger
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  test_modules:
+  build-and-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -27,21 +27,28 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Install dependencies
-        run: cd ./Builder && ./gradlew clean build
+      - name: Grant execute permissions for gradlew
+        run: chmod +x gradlew
 
-      # Test each module
-      - name: Test Factory Module
-        run: cd ./Factory && ./gradlew test --stacktrace
-        continue-on-error: true
+      - name: Build with Gradle
+        run: ./gradlew clean build --stacktrace
 
-      - name: Test Prototype Module
-        run: cd ./Prototype && ./gradlew test --stacktrace
-        continue-on-error: true
+      - name: Run Tests
+        run: ./gradlew test --stacktrace
 
-      - name: Test Singleton Module
-        run: cd ./Singleton && ./gradlew test --stacktrace
-        continue-on-error: true
+
+#      # Test each module
+#      - name: Test Factory Module
+#        run: cd ./Factory && ./gradlew test --stacktrace
+#        continue-on-error: true
+#
+#      - name: Test Prototype Module
+#        run: cd ./Prototype && ./gradlew test --stacktrace
+#        continue-on-error: true
+#
+#      - name: Test Singleton Module
+#        run: cd ./Singleton && ./gradlew test --stacktrace
+#        continue-on-error: true
 
       # You can add more test steps for other modules
       - name: Upload test results as artifact
