@@ -27,16 +27,20 @@ Here's a complete implementation of the generic factory design pattern in Kotlin
 
 ```mermaid
 classDiagram
-    AbstractFactory <|.. ConcreteFactoryA : implements
-    AbstractFactory <|.. ConcreteFactoryB : implements
+    Product : +use()
+    ConcreteProductA : +use()
+    Product <|.. ConcreteProductA : implements
+    ConcreteProductB : +use()
+    Product <|.. ConcreteProductB : implements
     AbstractFactory : +createProduct() Product
     ConcreteFactoryA : +createProduct() Product
     ConcreteFactoryB : +createProduct() Product
-    Product <|.. ConcreteProductA : implements
-    Product <|.. ConcreteProductB : implements
-    Product : +use()
-    ConcreteProductA : +use()
-    ConcreteProductB : +use()
+    AbstractFactory <|.. ConcreteFactoryA : implements
+    AbstractFactory <|.. ConcreteFactoryB : implements
+    AbstractFactory o-- Product : creates
+    ConcreteFactoryA o-- ConcreteProductA : creates
+    ConcreteFactoryB o-- ConcreteProductB : creates
     Client : +useFactory(AbstractFactory)
+    Client o-- AbstractFactory
 ```
 

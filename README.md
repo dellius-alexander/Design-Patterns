@@ -4,6 +4,50 @@
 
 This project is a collection of implementations of various design patterns in Kotlin and Java. Each design pattern is implemented in its own module, and each module contains a README.md file that provides a detailed explanation of the design pattern and its implementation.
 
+The Gang of Four (GoF) discussed 23 design patterns. Each of these patterns focuses on a particular object-oriented design principle and describes the consequences and trade-offs of its use. The GoF categorized these 23 patterns based on their purposes, as shown here:
+
+## Creational Patterns
+
+These patterns abstract the instantiation process. They make the systems independent from how their objects are composed, created, and represented. In these patterns, you should have a basic concern: “Where should I place the ‘new’ keyword in my application?” This decision can determine the degree of coupling of your classes. The following five patterns belong to this category:
+
+- [Singleton Design Pattern](#Singleton-Design-Pattern)
+- [Prototype Design Pattern](#Prototype-Design-Pattern)
+- [Factory Design Pattern](#Factory-Design-Pattern)
+- [Builder Design Pattern](#Builder-Design-Pattern)
+- Abstract Factory Pattern
+
+## Structural Patterns
+
+Here you focus on how classes and objects can be composed to form a relatively large structure. They generally use inheritance or composition to group different interfaces or implementations. Your choice of composition over inheritance (and vice versa) can affect the flexibility of your software. The following seven patterns fall into this category:
+
+- [Proxy Design Pattern](#Proxy-Design-Pattern)
+- Flyweight Pattern
+- Composite Pattern
+- Bridge Pattern
+- Facade Pattern
+- [Decorator Design Pattern](#Decorator-Design-Pattern)
+- [Adapter Design Pattern](#Adapter-Design-Pattern)
+
+## Behavioral Patterns
+
+Here you concentrate on algorithms and the assignment of responsibilities among objects. You also need to focus on the communication between them and how the objects are interconnected. The following eleven patterns fall into this category:
+
+- Observer Pattern
+- Strategy Pattern
+- Template Method Pattern
+- Command Pattern
+- Iterator Pattern
+- Memento Pattern
+- State Pattern
+- Mediator Pattern
+- Chain of Responsibility Pattern
+- Visitor Pattern
+- Interpreter Pattern
+
+The GoF made another classification based on scope. It examines whether the pattern primarily focuses on the classes or its objects. Class patterns deal with classes and subclasses. They use inheritance mechanisms, so they are static and fixed at compile time. Object patterns deal with objects that can change at run time. So, object patterns are dynamic.
+
+---
+
 ## Table of Contents
 
 - [Factory Design Pattern](#Factory-Design-Pattern)
@@ -14,6 +58,8 @@ This project is a collection of implementations of various design patterns in Ko
 - [Proxy Design Pattern](#Proxy-Design-Pattern)
 
 ---
+
+<!-- Existing content -->
 
 ## <h2 name="Factory Design Pattern" id="Factory-Design-Pattern">Factory Design Pattern</h2>
 

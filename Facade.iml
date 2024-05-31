@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="Facade" external.linked.project.path="$MODULE_DIR$/Facade" external.root.project.path="$MODULE_DIR$/Facade" external.system.id="GRADLE" external.system.module.group="org.example" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/Facade">
+      <excludeFolder url="file://$MODULE_DIR$/Facade/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/Facade/build" />
+    </content>
+    <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
