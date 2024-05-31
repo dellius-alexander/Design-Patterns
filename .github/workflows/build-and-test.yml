@@ -39,10 +39,10 @@ jobs:
           fi
           # Loop through all gradlew scripts found and build each one
           for GRADLEW in $GRADLEWS; do
-              DIRECTORY=$(dirname $GRADLEW)
-              cd $DIRECTORY
-              echo "Building $GRADLEW"
-              gradlew clean build --stacktrace && echo "Build passed" || echo "Build failed"
+              DIRECTORY=$(dirname $GRADLEW) &&
+              cd $DIRECTORY &&
+              echo "Building $DIRECTORY" &&
+              ./gradlew clean build --stacktrace && echo "Build passed" || echo "Build failed"
           done
 
       - name: Run Tests
@@ -54,10 +54,10 @@ jobs:
           fi
           # Loop through all gradlew scripts found and test each one
           for GRADLEW in $GRADLEWS; do
-              DIRECTORY=$(dirname $GRADLEW)
-              cd $DIRECTORY
-              echo "Testing $GRADLEW"
-              gradlew test --stacktrace && echo "Test passed" || echo "Test failed"
+              DIRECTORY=$(dirname $GRADLEW) &&
+              cd $DIRECTORY &&
+              echo "Testing $DIRECTORY" &&
+              ./gradlew test --stacktrace && echo "Test passed" || echo "Test failed"
           done
 
 
