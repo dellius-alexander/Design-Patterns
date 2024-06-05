@@ -25,7 +25,7 @@ class Department(private val name: String) : Employee { // Composite
 }
 
 // Building the Organization
-fun main() {
+fun main() {    // Client implementation
     val ceo = IndividualEmployee("Alice Johnson", 250000.0)
     val organization = Department("Acme Corporation")
     organization.addEmployee(ceo)
